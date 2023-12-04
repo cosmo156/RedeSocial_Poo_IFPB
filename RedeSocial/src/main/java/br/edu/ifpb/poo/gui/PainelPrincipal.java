@@ -45,12 +45,12 @@ public class PainelPrincipal extends javax.swing.JFrame {
                 JMenuItem jCurtir = new JMenuItem("Curtir");
                 JMenuItem jComnetar = new JMenuItem("Comentar");
                 JMenuItem jNumCurtidas = new JMenuItem("Curtidas: " + jList1.getSelectedValue().getCurtidas());
-                jCurtir.addActionListener(ActionEvent -> {
+                jCurtir.addActionListener(actionEvent -> {
                     Usuario userCurtir = jList1.getSelectedValue().getAuthor();
                     service.curtir(userCurtir, jList1.getSelectedValue());
                     new SucessMsgGUI("A postagem " + jList1.getSelectedValue().toString() + " curtida com sucesso!");
                 });
-                jComnetar.addActionListener(ActionEvent -> {
+                jComnetar.addActionListener(actionEvent -> {
                     Usuario userComentar = jList1.getSelectedValue().getAuthor();
                     new PainelComentar(jList1.getSelectedValue(), userComentar).setVisible(true);
                 });

@@ -2,13 +2,9 @@ package br.edu.ifpb.poo.gui;
 
 import br.edu.ifpb.poo.commads.CommandExecutor;
 import br.edu.ifpb.poo.commads.gui.LoginUserGuiCommad;
-import br.edu.ifpb.poo.domain.Usuario;
-import br.edu.ifpb.poo.repository.AdmUsuarioRepository;
-import br.edu.ifpb.poo.service.AdmUsuarioService;
 
+import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
@@ -21,17 +17,6 @@ public class PainelLogin extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
-
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         setLocationRelativeTo(null);
         setTitle("Painel de login");
         setResizable(false);
@@ -41,12 +26,10 @@ public class PainelLogin extends javax.swing.JFrame {
         jLabel1.setText("Nome:");
         jLabel2.setText("Senha:");
         jButton1.setText("Entrar");
-        jButton1.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new CommandExecutor().executeCommad(new LoginUserGuiCommad(PainelLogin.this, jTextField1, jPasswordField1));
-            }
-        });
+
+        jButton1.addActionListener((java.awt.event.ActionEvent evt) ->
+            new CommandExecutor().executeCommad(new LoginUserGuiCommad(PainelLogin.this, jTextField1, jPasswordField1))
+        );
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 255));
@@ -154,15 +137,15 @@ public class PainelLogin extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton jButton1 = new JButton();
+    private javax.swing.JLabel jLabel1 = new JLabel();
+    private javax.swing.JLabel jLabel2 = new JLabel();
+    private javax.swing.JLabel jLabel3 = new JLabel();
+    private javax.swing.JLabel jLabel4 = new JLabel();
+    private javax.swing.JLabel jLabel5 = new JLabel();
+    private javax.swing.JLabel jLabel6 = new JLabel();
+    private javax.swing.JPanel jPanel1 = new JPanel();
+    private javax.swing.JPasswordField jPasswordField1 = new JPasswordField();
+    private javax.swing.JTextField jTextField1 = new JTextField();
     // End of variables declaration
 }
