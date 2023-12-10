@@ -1,26 +1,35 @@
 package br.edu.ifpb.poo.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Curtida implements Serializable {
-    private int numeroCurtidas;
+    private List<Usuario> numeroCurtidas;
 
     public Curtida(){
-        this.numeroCurtidas = 0;
+        this.numeroCurtidas = new ArrayList<>();
     }
 
     public int getNumeroCurtidas(){
-        return this.numeroCurtidas;
+        return this.numeroCurtidas.size();
     }
 
-    public void curtir(){
-        this.numeroCurtidas++;
-    }
-
-    public void descurtir(){
-        if (this.numeroCurtidas == 0){
+    public void curtir(Usuario user){
+        if (isUserCurtida(user)){
             return;
         }
-        this.numeroCurtidas--;
+        this.numeroCurtidas.add(user);
+    }
+
+    public void descurtir(Usuario user){
+        if (this.numeroCurtidas.isEmpty()){
+            return;
+        }
+        this.numeroCurtidas.remove(user);
+    }
+
+    public boolean isUserCurtida(Usuario user){
+        return this.numeroCurtidas.contains(user);
     }
 }

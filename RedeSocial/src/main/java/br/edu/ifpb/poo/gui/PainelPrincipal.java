@@ -42,13 +42,19 @@ public class PainelPrincipal extends javax.swing.JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 JPopupMenu popupMenu = new JPopupMenu();
-                JMenuItem jCurtir = new JMenuItem("Curtir");
+                JMenuItem jCurtir = new JMenuItem();
                 JMenuItem jComnetar = new JMenuItem("Comentar");
                 JMenuItem jNumCurtidas = new JMenuItem("Curtidas: " + jList1.getSelectedValue().getCurtidas());
+                boolean isCurtida = jList1.getSelectedValue().isCurtida(userLogado);
+                jCurtir.setText(isCurtida? "Descurtir" : "Curtir");
                 jCurtir.addActionListener(actionEvent -> {
-                    Usuario userCurtir = jList1.getSelectedValue().getAuthor();
-                    service.curtir(userCurtir, jList1.getSelectedValue());
-                    new SucessMsgGUI("A postagem " + jList1.getSelectedValue().toString() + " curtida com sucesso!");
+                    if(jCurtir.getText().equals("Curtir")){
+                        service.curtir(userLogado, jList1.getSelectedValue());
+                        new SucessMsgGUI("A postagem " + jList1.getSelectedValue().toString() + " curtida com sucesso!");
+                    }else {
+                        service.removerCurtida(userLogado, jList1.getSelectedValue());
+                        new SucessMsgGUI("A curtida foi removida com sucesso!");
+                    }
                 });
                 jComnetar.addActionListener(actionEvent -> {
                     Usuario userComentar = jList1.getSelectedValue().getAuthor();
@@ -60,7 +66,6 @@ public class PainelPrincipal extends javax.swing.JFrame {
                 popupMenu.show(jList1, e.getX(), e.getY());
             }
         });
-
 
 
         jScrollPane2.setViewportView(jList1);

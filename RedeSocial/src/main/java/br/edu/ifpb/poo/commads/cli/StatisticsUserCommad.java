@@ -8,6 +8,7 @@ import br.edu.ifpb.poo.domain.Usuario;
 import br.edu.ifpb.poo.repository.AdmUsuarioRepository;
 import br.edu.ifpb.poo.service.AdmUsuarioService;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class StatisticsUserCommad implements Commad {
@@ -19,31 +20,31 @@ public class StatisticsUserCommad implements Commad {
 
     @Override
     public void execute() {
-        AdmUsuarioService admUsuarioService = new AdmUsuarioService(AdmUsuarioRepository.getInstance());
-        if (!admUsuarioService.getPostagens(this.user).isEmpty()){
+        if (!user.getPostagens().isEmpty()){
             Scanner sc = new Scanner(System.in);
             System.out.println("==============");
             System.out.println("Escolha a postagem que deseja interagir: ");
-            for (Postagem postagem: admUsuarioService.getPostagens(user)){
+            for (Postagem postagem: user.getPostagens()){
                 System.out.println("========================");
-                System.out.println("Indice: " + admUsuarioService.getPostagens(user).indexOf(postagem));
+                System.out.println("Indice: " + user.getPostagens().indexOf(postagem));
                 System.out.println("Conteudo: "+ postagem.getTexto());
                 System.out.println("Curtidas: "+ postagem.getCurtidas());
                 System.out.println("Comentarios:" );
-                for (Comentario comentario: admUsuarioService.getComentario(postagem)){
-                    System.out.println(comentario);
+                for (Comentario comentario: postagem.getComentarios()){
+                    System.out.println(comentario.getTexto());
                 }
                 System.out.println("========================");
             }
             System.out.print("Digite o index da postagem: ");
             int index = sc.nextInt();
-            if (index > admUsuarioService.getPostagens(user).size()){
+            if (index > user.getPostagens().size()){
                 System.out.println("Index invalido!");
             }else {
-                Postagem postagem = admUsuarioService.getPostagens(user).get(index);
+                Postagem postagem = user.getPostagens().get(index);
                 new CommandExecutor().executeCommad(new MenuInteractUserCommad(this.user, postagem));
             }
+        }else {
+            System.out.println("O usuário não tem nenhuma postagem cadastrada!");
         }
-        System.out.println("O usuário não tem nenhuma postagem cadastrada!");
     }
 }

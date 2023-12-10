@@ -23,12 +23,10 @@ public class InMemoryDataService implements DataService {
 
     @Override
     public Usuario searchUser(String nome) {
-        for (Usuario usuarioSearch: this.usuarios){
-            if (usuarioSearch.getNome().equals(nome)){
-                return usuarioSearch;
-            }
-        }
-        return null;
+        return this.usuarios.stream()
+                .filter(user -> user.getNome().equals(nome))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
@@ -37,18 +35,16 @@ public class InMemoryDataService implements DataService {
     }
 
     @Override
-    public Usuario logarUsuario(String nome, String senha){
-        for (Usuario user: this.usuarios){
-            if (user.getNome().equals(nome) && user.getSenha().equals(senha)){
-                return user;
-            }
-        }
-        return null;
+    public Usuario logarUsuario(String nome, String senha) {
+        return this.usuarios.stream()
+                .filter(user -> user.getNome().equals(nome) && user.getSenha().equals(senha))
+                .findFirst()
+                .orElse(null);
     }
 
     @Override
     public void fazerPostagem(Usuario user, Postagem postagem) {
-            user.fazerPostagem(postagem);
+        user.fazerPostagem(postagem);
     }
 
     @Override
@@ -59,14 +55,16 @@ public class InMemoryDataService implements DataService {
 
     @Override
     public void curtir(Usuario user, Postagem postagem) {
-        int index = user.getPostagens().indexOf(postagem);
-        user.getPostagens().get(index).curtir();
+        Usuario autorPost = postagem.getAuthor();
+        int index = autorPost.getPostagens().indexOf(postagem);
+        autorPost.getPostagens().get(index).curtir(user);
     }
 
     @Override
     public void removerCurtida(Usuario user, Postagem postagem) {
-        int index = user.getPostagens().indexOf(postagem);
-        user.getPostagens().get(index).removerCurtida();
+        Usuario autorPost = postagem.getAuthor();
+        int index = autorPost.getPostagens().indexOf(postagem);
+        autorPost.getPostagens().get(index).removerCurtida(user);
     }
 
     @Override
@@ -76,20 +74,5 @@ public class InMemoryDataService implements DataService {
             allpost.addAll(user.getPostagens());
         }
         return allpost;
-    }
-
-    @Override
-    public List<Postagem> getPostagens(Usuario user) {
-        return user.getPostagens();
-    }
-
-    @Override
-    public List<Comentario> getComentarios(Postagem postagem) {
-        return postagem.getComentarios();
-    }
-
-    @Override
-    public int getCurtidas(Postagem postagem) {
-        return postagem.getCurtidas();
     }
 }

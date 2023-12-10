@@ -5,15 +5,12 @@ import br.edu.ifpb.poo.commads.gui.CreateCommentGuiCommad;
 import br.edu.ifpb.poo.domain.Comentario;
 import br.edu.ifpb.poo.domain.Postagem;
 import br.edu.ifpb.poo.domain.Usuario;
-import br.edu.ifpb.poo.repository.AdmUsuarioRepository;
-import br.edu.ifpb.poo.service.AdmUsuarioService;
 
 import javax.swing.*;
 
 public class PainelComentar extends javax.swing.JFrame {
     private Postagem post;
     private Usuario user;
-    private transient AdmUsuarioService service = new AdmUsuarioService(AdmUsuarioRepository.getInstance());
 
     public PainelComentar(Postagem post, Usuario user) {
         this.post = post;
@@ -109,7 +106,7 @@ public class PainelComentar extends javax.swing.JFrame {
     }// </editor-fold>
 
     public void updateComentarios(){
-        jList1.setListData(service.getComentario(post).toArray(new Comentario[0]));
+        jList1.setListData(post.getComentarios().toArray(new Comentario[0]));
     }
 
 

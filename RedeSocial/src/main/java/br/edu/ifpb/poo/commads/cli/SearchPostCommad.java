@@ -18,18 +18,17 @@ public class SearchPostCommad implements Commad {
 
     @Override
     public void execute() {
-        AdmUsuarioService admUsuarioService = new AdmUsuarioService(AdmUsuarioRepository.getInstance());
-        if (!admUsuarioService.getPostagens(user).isEmpty()){
+        if (!user.getPostagens().isEmpty()){
             Scanner sc = new Scanner(System.in);
             System.out.println("==============");
             System.out.println("Escolha a postagem que deseja interagir: ");
-            for (Postagem postagem: admUsuarioService.getPostagens(user)){
-                System.out.println("Indice: " + admUsuarioService.getPostagens(user).indexOf(postagem));
+            for (Postagem postagem: user.getPostagens()){
+                System.out.println("Indice: " + user.getPostagens().indexOf(postagem));
                 System.out.println("Conteudo: "+ postagem.getTexto());
             }
             System.out.print("Digite o index da postagem: ");
             int index = sc.nextInt();
-            Postagem postagem = admUsuarioService.getPostagens(user).get(index);
+            Postagem postagem = user.getPostagens().get(index);
             new CommandExecutor().executeCommad(new MenuInteractUserCommad(this.user, postagem));
         }
         System.out.println("O Usuário selecionado não possui nenhuma postagem cadastrada!");

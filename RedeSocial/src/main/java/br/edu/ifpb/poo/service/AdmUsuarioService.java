@@ -55,16 +55,4 @@ public class AdmUsuarioService implements Serializable {
         this.repository.removerCurtida(user, postagem);
     }
 
-    public List<Postagem> getPostagens(Usuario user){
-        return this.repository.getPostagens(user);
-    }
-
-    public List<Comentario> getComentario(Postagem postagem){
-        return this.repository.getComentario(postagem);
-    }
-
-    public int getCurtidas(Postagem postagem){
-        return  this.repository.getCurtidas(postagem);
-    }
-
 }

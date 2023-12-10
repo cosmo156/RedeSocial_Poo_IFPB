@@ -16,8 +16,4 @@ public interface DataService {
     void curtir(Usuario user, Postagem postagem);
     void removerCurtida(Usuario user, Postagem postagem);
     List<Postagem> getAllPost();
-    List<Postagem> getPostagens(Usuario user);
-    List<Comentario> getComentarios(Postagem postagem);
-    int getCurtidas(Postagem postagem);
-
 }

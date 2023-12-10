@@ -41,6 +41,7 @@ public class MenuInteractUserCommad implements Commad {
                 case 1 -> executor.executeCommad(new LikePostCommad(this.user, this.userPost));
                 case 2 -> executor.executeCommad(new RemoveLikePostCommad(this.user, this.userPost));
                 case 3 -> executor.executeCommad(new CommentPostCommad(this.userPost));
+                default -> System.out.println("Opção invalida!");
             }
         }while (opcao != 4);
     }

@@ -30,16 +30,20 @@ public class Postagem implements Serializable {
         return this.author;
     }
 
-    public void curtir() {
-        this.curtidas.curtir();
+    public void curtir(Usuario user) {
+        this.curtidas.curtir(user);
     }
 
     public List<Comentario> getComentarios() {
         return comentarios;
     }
 
-    public void removerCurtida() {
-       this.curtidas.descurtir();
+    public void removerCurtida(Usuario user) {
+       this.curtidas.descurtir(user);
+    }
+
+    public boolean isCurtida(Usuario user){
+        return this.curtidas.isUserCurtida(user);
     }
 
     public void adicionarComentario(Comentario comentario) {
