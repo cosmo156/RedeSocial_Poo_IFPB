@@ -8,7 +8,7 @@ import java.awt.*;
 import java.util.Scanner;
 
 public class MenuUserCommad implements Commad {
-    private Usuario user;
+    private final Usuario user;
     public MenuUserCommad(Usuario user){
         this.user = user;
     }
@@ -32,6 +32,8 @@ public class MenuUserCommad implements Commad {
                 case 1 -> executor.executeCommad(new CreatePostCommad(this.user));
                 case 2 -> executor.executeCommad(new InteractOtherUserCommad(this.user));
                 case 3 -> executor.executeCommad(new StatisticsUserCommad(this.user));
+                case 4 -> System.out.println("Saindo...");
+                default -> System.out.println("Opção invalida!");
             }
         }while (opcao != 4);
     }

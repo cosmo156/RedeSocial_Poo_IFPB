@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Curtida implements Serializable {
-    private List<Usuario> numeroCurtidas;
+    private final List<Usuario> numeroCurtidas;
 
     public Curtida(){
         this.numeroCurtidas = new ArrayList<>();

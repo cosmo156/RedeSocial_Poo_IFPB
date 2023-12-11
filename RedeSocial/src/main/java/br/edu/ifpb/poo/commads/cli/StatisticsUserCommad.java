@@ -5,14 +5,10 @@ import br.edu.ifpb.poo.commads.CommandExecutor;
 import br.edu.ifpb.poo.domain.Comentario;
 import br.edu.ifpb.poo.domain.Postagem;
 import br.edu.ifpb.poo.domain.Usuario;
-import br.edu.ifpb.poo.repository.AdmUsuarioRepository;
-import br.edu.ifpb.poo.service.AdmUsuarioService;
-
-import java.util.List;
 import java.util.Scanner;
 
 public class StatisticsUserCommad implements Commad {
-    private Usuario user;
+    private final Usuario user;
 
     public StatisticsUserCommad(Usuario user){
         this.user = user;

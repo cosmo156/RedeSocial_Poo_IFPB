@@ -11,7 +11,7 @@ import br.edu.ifpb.poo.validators.ValidationContext;
 import java.util.List;
 
 public class InteractOtherUserCommad implements Commad {
-    private Usuario myUser;
+    private final Usuario myUser;
     public InteractOtherUserCommad(Usuario user){
         this.myUser = user;
     }

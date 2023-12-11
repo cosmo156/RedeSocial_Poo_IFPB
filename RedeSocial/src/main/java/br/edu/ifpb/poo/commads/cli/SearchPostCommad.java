@@ -4,13 +4,11 @@ import br.edu.ifpb.poo.adpter.Commad;
 import br.edu.ifpb.poo.commads.CommandExecutor;
 import br.edu.ifpb.poo.domain.Postagem;
 import br.edu.ifpb.poo.domain.Usuario;
-import br.edu.ifpb.poo.repository.AdmUsuarioRepository;
-import br.edu.ifpb.poo.service.AdmUsuarioService;
 
 import java.util.Scanner;
 
 public class SearchPostCommad implements Commad {
-    private Usuario user;
+    private final Usuario user;
 
     public SearchPostCommad(Usuario user) {
         this.user = user;

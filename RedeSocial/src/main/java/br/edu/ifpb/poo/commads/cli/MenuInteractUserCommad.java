@@ -10,8 +10,8 @@ import br.edu.ifpb.poo.service.AdmUsuarioService;
 import java.util.Scanner;
 
 public class MenuInteractUserCommad implements Commad {
-    private Usuario user;
-    private Postagem userPost;
+    private final Usuario user;
+    private final Postagem userPost;
 
     public MenuInteractUserCommad(Usuario user, Postagem userPost){
         this.user = user;
@@ -41,6 +41,7 @@ public class MenuInteractUserCommad implements Commad {
                 case 1 -> executor.executeCommad(new LikePostCommad(this.user, this.userPost));
                 case 2 -> executor.executeCommad(new RemoveLikePostCommad(this.user, this.userPost));
                 case 3 -> executor.executeCommad(new CommentPostCommad(this.userPost));
+                case 4 -> System.out.printf("Saindo...");
                 default -> System.out.println("Opção invalida!");
             }
         }while (opcao != 4);

@@ -7,8 +7,8 @@ import br.edu.ifpb.poo.repository.AdmUsuarioRepository;
 import br.edu.ifpb.poo.service.AdmUsuarioService;
 
 public class LikePostCommad implements Commad {
-    private Usuario user;
-    private Postagem postagem;
+    private final Usuario user;
+    private final Postagem postagem;
 
     public LikePostCommad(Usuario user, Postagem postagem){
         this.postagem = postagem;

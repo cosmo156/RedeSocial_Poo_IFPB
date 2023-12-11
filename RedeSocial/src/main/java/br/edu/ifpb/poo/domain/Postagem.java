@@ -6,10 +6,10 @@ import java.util.List;
 
 
 public class Postagem implements Serializable {
-    private String texto;
-    private Curtida curtidas;
-    private List<Comentario> comentarios;
-    private Usuario author;
+    private final String texto;
+    private final Curtida curtidas;
+    private final List<Comentario> comentarios;
+    private final Usuario author;
 
     public Postagem(Usuario author, String texto) {
         this.texto = texto;
@@ -23,7 +23,7 @@ public class Postagem implements Serializable {
     }
 
     public int getCurtidas() {
-        return curtidas.getNumeroCurtidas();
+        return this.curtidas.getNumeroCurtidas();
     }
 
     public Usuario getAuthor() {
@@ -35,7 +35,7 @@ public class Postagem implements Serializable {
     }
 
     public List<Comentario> getComentarios() {
-        return comentarios;
+        return this.comentarios;
     }
 
     public void removerCurtida(Usuario user) {

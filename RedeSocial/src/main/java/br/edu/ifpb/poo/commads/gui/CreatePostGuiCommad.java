@@ -11,8 +11,8 @@ import br.edu.ifpb.poo.validators.GuiTextValidator;
 import javax.swing.*;
 
 public class CreatePostGuiCommad implements Commad {
-    private Usuario user;
-    private JTextArea jTextArea;
+    private final Usuario user;
+    private final JTextArea jTextArea;
     private final AdmUsuarioService service = new AdmUsuarioService(AdmUsuarioRepository.getInstance());
 
     public CreatePostGuiCommad(Usuario user, JTextArea jTextArea){

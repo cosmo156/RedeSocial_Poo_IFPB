@@ -17,7 +17,7 @@ public class SistemaRedeSocialCliAplication {
         CommandExecutor executor = new CommandExecutor();
 
         Scanner sc = new Scanner(System.in);
-        int opcao = -1;
+        int opcao;
 
         do {
             System.out.println("\n=================================");
@@ -31,6 +31,8 @@ public class SistemaRedeSocialCliAplication {
             switch (opcao){
                 case 1 -> executor.executeCommad(new RegisterUserCommad());
                 case 2 -> executor.executeCommad(new LoginUserCommad());
+                case 3 -> System.out.println("Saindo....");
+                default -> System.out.println("Opção invalida!");
             }
         }while (opcao != 3);
     }

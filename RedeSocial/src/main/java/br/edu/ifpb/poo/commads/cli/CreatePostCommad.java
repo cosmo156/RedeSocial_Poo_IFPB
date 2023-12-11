@@ -9,7 +9,7 @@ import br.edu.ifpb.poo.validators.ContentValidator;
 import br.edu.ifpb.poo.validators.ValidationContext;
 
 public class CreatePostCommad implements Commad {
-    private Usuario user;
+    private final Usuario user;
     public CreatePostCommad(Usuario user){
         this.user = user;
     }

@@ -7,8 +7,8 @@ import br.edu.ifpb.poo.repository.AdmUsuarioRepository;
 import br.edu.ifpb.poo.service.AdmUsuarioService;
 
 public class RemoveLikePostCommad implements Commad {
-    private Usuario user;
-    private Postagem postagem;
+    private final Usuario user;
+    private final Postagem postagem;
 
     public RemoveLikePostCommad(Usuario user, Postagem postagem){
         this.postagem = postagem;
